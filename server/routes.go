@@ -628,7 +628,7 @@ func checkNameExists(name model.Name) error {
 	}
 
 	for n := range names {
-		if strings.EqualFold(n.Filepath(), name.Filepath()) && n != name {
+		if strings.EqualFold(n.Filepath(), name.Filepath()) && n.EqualFold(name) {
 			return errors.New("a model with that name already exists")
 		}
 	}

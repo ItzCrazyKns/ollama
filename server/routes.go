@@ -540,11 +540,6 @@ func (s *Server) PullHandler(c *gin.Context) {
 		return
 	}
 
-	if err := checkNameExists(name); err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
 	ch := make(chan any)
 	go func() {
 		defer close(ch)
